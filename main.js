@@ -31,20 +31,37 @@ let scelta = prompt("Scegli pari o dispari");
 console.log(scelta);
 
 let numeroUtente = parseInt(prompt("Scegli un numero da 1 a 5"));
-console.log(numeroUtente);
+console.log(`tuo numero: ${numeroUtente}`);
 
-let numeroPc = Math.floor(Math.random() * 5) + 1;
-console.log(numeroPc);
+function numeroPc(){
+  let numeroRandomPc = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+  return numeroRandomPc;
+}
 
-let somma = numeroUtente + numeroPc;
-console.log(somma);
+let numRandomPc = numeroPc();
 
-// function PariDispari(){
-      if ((scelta == "pari") && (somma % 2 == 0)){
-          console.log('Hai vinto');
-      } else if ((scelta == "dispari") && (somma % 2 !== 0)){
-        console.log('Hai vinto');
-      } else {
-        console.log('Hai perso');
-      }
-// }
+console.log(`Numero CPU: ${numRandomPc}`);
+
+function somma(x,y){
+  let somma = x + y;
+  return somma;
+}
+
+console.log(`La somma è: ${somma(numeroUtente, numRandomPc)}`);
+
+function PariDispari(){
+  let controllo = '';
+  if(somma % 2 == 0){
+    controllo = 'pari';
+    return controllo;
+  } else {
+    controllo = 'dispari';
+    return controllo;
+  }
+}
+
+if(scelta == PariDispari()){
+  console.log("Hai vinto");
+} else {
+  console.log("Hai perso");
+}
